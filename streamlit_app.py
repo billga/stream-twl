@@ -7,7 +7,7 @@ st.title("Eldrow!")
 words = [*twl.iterator()]
 word5 = [w for w in words if len(w)==5]
 # st.write(random.choice(word5))
-bee = st.text_input(":bee:", help="center letter first, 7 letters total")
+bee = st.text_input(":bee:", help="center letter first, 7 letters total").lower()
 
 if len(bee)==7:
     candidates = sorted((w for w in words if set(w).issubset(bee) and bee[0] in w), key=len, reverse=True)
