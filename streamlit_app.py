@@ -1,13 +1,12 @@
 import streamlit as st
 import twl
-import random
 
-st.title("Eldrow!")
+st.title(":bee:!")
 
 words = [*twl.iterator()]
 word5 = [w for w in words if len(w)==5]
 # st.write(random.choice(word5))
-bee = st.text_input(":bee:", help="center letter first, 7 letters total").lower()
+bee = st.text_input(":bee:", help="center letter first, 7 letters total").strip().lower()
 
 if len(bee)==7:
     candidates = sorted((w for w in words if set(w).issubset(bee) and bee[0] in w), key=len, reverse=True)
@@ -16,4 +15,9 @@ if len(bee)==7:
     # st.markdown(pangrams)
     for w in candidates:
         st.write(f"{w+' <-:100:' if set(bee).issubset(w) else w}")
-        
+else:
+    if len(bee)>7:
+        "too many"
+    else:
+        "too few"
+
